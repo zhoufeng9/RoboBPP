@@ -71,13 +71,7 @@ This directory provides the **testing and evaluation code** for running all algo
 ---
 
 ### `experiment/`
-This directory contains code for **controlled experimental studies** beyond standard benchmark evaluation.
-
-- Verification and ablation experiments for evaluation metrics  
-- Statistical analysis of dataset properties  
-- Experiments validating the effectiveness and rationality of the proposed benchmark metrics
-
-These experiments are primarily used to support the analysis and claims presented in the paper.
+Experiments validating the effectiveness and rationality of the proposed benchmark metrics
 
 ---
 
