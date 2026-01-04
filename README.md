@@ -1,6 +1,6 @@
 # RoboBPP: Benchmarking Robotic Online Bin Packing with Physics-based Simulation
 
-📦🤖 **RoboBPP** is a comprehensive benchmark for **Robotic Online 3D Bin Packing**, designed to bridge the gap between algorithmic packing performance and **physical feasibility in real robotic scenarios**.  
+**RoboBPP** is a comprehensive benchmark for **Robotic Online 3D Bin Packing**, designed to bridge the gap between algorithmic packing performance and **physical feasibility in real robotic scenarios**.  
 The benchmark integrates **real-world industrial datasets**, **standardized evaluation metrics**, and a **physics-based simulation environment** to support fair, reproducible, and realistic comparisons.
 
 ---
