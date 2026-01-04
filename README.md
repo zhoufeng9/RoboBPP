@@ -39,7 +39,7 @@ RoboBPP includes **three real-world industrial datasets**, covering diverse pack
 - **Wood Board Dataset** – Long and slender industrial materials  
 
 📥 **All datasets can be downloaded from the project homepage:**  
-https://robot-bin-packing-benchmark.github.io/
+https://robot-bin-packing-benchmark.github.io/download.html
 
 ---
 
