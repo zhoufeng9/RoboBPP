@@ -78,6 +78,6 @@ Experiments validating the effectiveness and rationality of the proposed benchma
 ## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/your-repo/RoboBPP.git
+git clone https://github.com/wzfer/RoboBPP.git
 cd RoboBPP
 ```
