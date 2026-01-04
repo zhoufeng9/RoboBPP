@@ -1,0 +1,393 @@
+<?xml version="1.0"?>
+<robot name="abb_irb6700_200_260" xmlns:xacro="http://ros.org/wiki/xacro">
+  <material name="LightGrey">
+    <color rgba="0.8 0.8 0.8 1.0"/>
+  </material>
+
+  <material name="DarkGrey">
+    <color rgba="0.2 0.2 0.2 1.0"/>
+  </material>
+  <!-- link list -->
+  <link name="extra_base_link">
+  <visual>
+    <origin xyz="0 0 0.3" rpy="0 0 0"/> <!-- 调整这个origin来改变新底座的位置 -->
+    <geometry>
+      <box size="0.8 0.8 0.6"/> <!-- 根据需要调整尺寸 -->
+    </geometry>
+    <material name="LightGrey"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <box size="1 1 0.2"/>
+    </geometry>
+  </collision>
+  <inertial>
+    <mass value="50"/> <!-- 调整质量 -->
+    <origin xyz="0 0 -0.1" rpy="0 0 0"/>
+    <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/> <!-- 调整惯性 -->
+  </inertial>
+  </link>
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="visual/base_link.stl" />
+      </geometry>
+      <material name="LightGrey"/>
+    </visual>
+    <!-- collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="collision/base_link.stl" />
+      </geometry>
+    </collision -->
+    <inertial>
+      <mass value="32.0"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.07093330496" ixy="0.0" ixz="0.0" iyy="0.07093330496" iyz="0.0" izz="0.1152"/>
+    </inertial>
+  </link>
+  <link name="link_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="visual/link_1.stl" />
+      </geometry>
+      <material name="DarkGrey"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="collision/link_1.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="29.6"/> <!-- 质量放大8倍 -->
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.164279934288" ixy="0.0" ixz="0.0" iyy="0.164279934288" iyz="0.0" izz="0.10656"/> <!-- 惯性张量放大16倍 -->
+    </inertial>
+  </link>
+  <link name="cylinder">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="visual/cylinder.stl" />
+      </geometry>
+      <material name="LightGrey"/>
+    </visual>
+    <!-- collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="collision/cylinder.stl" />
+      </geometry>
+    </collision -->
+    <inertial>
+      <mass value="29.6"/> <!-- 质量放大8倍 -->
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.164279934288" ixy="0.0" ixz="0.0" iyy="0.164279934288" iyz="0.0" izz="0.10656"/> <!-- 惯性张量放大16倍 -->
+    </inertial>
+  </link>
+  <link name="piston">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="visual/piston.stl" />
+      </geometry>
+      <material name="DarkGrey"/>
+    </visual>
+    <!-- collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="collision/piston.stl" />
+      </geometry>
+    </collision -->
+    <inertial>
+      <mass value="29.6"/> <!-- 质量放大8倍 -->
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.164279934288" ixy="0.0" ixz="0.0" iyy="0.164279934288" iyz="0.0" izz="0.10656"/> <!-- 惯性张量放大16倍 -->
+    </inertial>
+  </link>
+  <link name="link_2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="visual/link_2.stl" />
+      </geometry>
+      <material name="LightGrey"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="collision/link_2.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="67.144"/> <!-- 质量放大8倍 -->
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.56"/> <!-- 原点位置放大2倍 -->
+      <inertia ixx="3.63013140688" ixy="0.0" ixz="0.0" iyy="3.63013140688" iyz="0.0" izz="0.2417184"/> <!-- 惯性张量放大16倍 -->
+    </inertial>
+  </link>
+  <link name="link_3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="visual/link_3.stl" />
+      </geometry>
+      <material name="DarkGrey"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="collision/link_3.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="18.2"/> <!-- 质量放大8倍 -->
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.5"/> <!-- 原点位置放大2倍 -->
+      <inertia ixx="0.791090116896" ixy="0.0" ixz="0.0" iyy="0.791090116896" iyz="0.0" izz="0.06552"/> <!-- 惯性张量放大16倍 -->
+    </inertial>
+  </link>
+  <link name="link_4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="visual/link_4.stl" />
+      </geometry>
+      <material name="LightGrey"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="collision/link_4.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="9.752"/> <!-- 质量放大8倍 -->
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="1.778764088496" ixy="0.0" ixz="0.0" iyy="1.778764088496" iyz="0.0" izz="3.51072"/> <!-- 惯性张量放大16倍 -->
+    </inertial>
+  </link>
+  <link name="link_5">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="visual/link_5.stl" />
+      </geometry>
+      <material name="DarkGrey"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="collision/link_5.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="9.752"/> <!-- 质量放大8倍 -->
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="1.778764088496" ixy="0.0" ixz="0.0" iyy="1.778764088496" iyz="0.0" izz="3.51072"/> <!-- 惯性张量放大16倍 -->
+    </inertial>
+  </link>
+  <link name="link_6">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="visual/link_6.stl" />
+      </geometry>
+      <material name="LightGrey"/>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="collision/link_6.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="1.5032"/> <!-- 质量放大8倍 -->
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.2741835703264" ixy="0.0" ixz="0.0" iyy="0.2741835703264" iyz="0.0" izz="0.541152"/> <!-- 惯性张量放大16倍 -->
+    </inertial>
+  </link>
+
+  <!-- add some links -->
+  <link name="ee_link">
+    <visual>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.01 0 0"/>
+    </visual>
+    <!-- <collision>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.01 0 0"/>
+    </collision> -->
+    <inertial>
+      <mass value="0.0"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    </inertial>
+  </link>
+
+  <link name="base">
+    <inertial>
+      <mass value="0.0"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    </inertial>
+  </link>
+
+  <link name="tool0">
+    <inertial>
+      <mass value="0.0"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    </inertial>
+  </link>
+
+  <link name="tool_tip"><!-- here -->
+    <inertial>
+      <mass value="0.0"/>
+      <!-- 3.14159265359 0 -1.57079632679 -->
+      <origin rpy="3.14159265359 0 -1.57079632679" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    </inertial>
+    <!-- <visual>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </visual> -->
+  </link>
+
+  <link name="world"/>
+
+  <link name="rotated_base_link">
+    <inertial>
+      <mass value="0.0"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    </inertial>
+  </link>
+
+
+  <!-- end of link list -->
+  <!-- joint list -->
+  <joint name="joint_1" type="revolute">
+    <origin xyz="0 0 0.78" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="link_1" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.967" upper="2.967" effort="0" velocity="1.919" />
+  </joint>
+  <joint name="joint_2" type="revolute">
+    <origin xyz="0.32 0 0" rpy="0 0 0" />
+    <parent link="link_1" />
+    <child link="link_2" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.134" upper="1.483" effort="0" velocity="1.919" />
+  </joint>
+  <joint name="joint_3" type="revolute">
+    <origin xyz="0 0 1.125" rpy="0 0 0" />
+    <parent link="link_2" />
+    <child link="link_3" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.142" upper="1.222" effort="0" velocity="1.919" />
+  </joint>
+  <joint name="joint_4" type="revolute">
+    <origin xyz="0 0 0.2" rpy="0 0 0" />
+    <parent link="link_3" />
+    <child link="link_4" />
+    <axis xyz="1 0 0" />
+    <limit lower="-5.236" upper="5.236" effort="0" velocity="3.316" />
+  </joint>
+  <joint name="joint_5" type="revolute">
+    <origin xyz="1.1425 0 0" rpy="0 0 0" />
+    <parent link="link_4" />
+    <child link="link_5" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.268" upper="2.268" effort="0" velocity="2.618" />
+  </joint>
+  <joint name="joint_6" type="revolute">
+    <origin xyz="0.2 0 0" rpy="0 0 0" />
+    <parent link="link_5" />
+    <child link="link_6" />
+    <axis xyz="1 0 0" />
+    <limit lower="-6.283" upper="6.283" effort="0" velocity="3.665" />
+  </joint>
+  <joint name="cylinder_joint" type="revolute">
+    <origin xyz="-0.349 -0.194 -0.142" rpy="0 0 0" />
+    <parent link="link_1" />
+    <child link="cylinder" />
+    <axis xyz="0 1 0" />
+    <mimic joint="joint_2" multiplier="-0.25"/>
+    <limit lower="-0.284" upper="0.371" effort="0" velocity="100" />
+  </joint>
+  <joint name="piston_joint" type="prismatic">
+    <origin xyz="0 0 0" rpy="0.20897 0 -1.571" />
+    <parent link="cylinder" />
+    <child link="piston" />
+    <axis xyz="0 1 0" />
+    <mimic joint="joint_2" multiplier="0.15"/>
+    <limit lower="-0.25" upper="0.25" effort="0" velocity="100" />
+  </joint>
+
+  <!-- add some joints -->
+  <joint name="ee_fixed_joint" type="fixed">
+    <parent link="link_6"/>
+    <child link="ee_link"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>    <!-- 0.0 0.0 2.0 -->
+  </joint>
+
+  <joint name="extra_base_link-base_fixed_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="extra_base_link"/>
+    <child link="base"/>
+  </joint>
+
+  <joint name="link_6-tool0_fixed_joint" type="fixed">
+    <origin rpy="0 1.57079632679 0" xyz="0 0 0"/>   <!-- 0.1 0 0 -->
+    <parent link="link_6"/>
+    <child link="tool0"/>
+  </joint>
+
+
+  <!-- <joint name="joint_6-tool0" type="fixed">
+    <parent link="link_6"/>
+    <child link="tool0"/>
+    <origin rpy="0 1.57079632679 0" xyz="0 0 0"/>
+  </joint> -->
+  <joint name="tool0-tool_tip" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.12"/>          <!-- 0 0 0.12 0.21 -->
+    <parent link="tool0"/>
+    <child link="tool_tip"/>
+  </joint>
+
+  <joint name="world_joint" type="fixed">
+    <parent link="world"/>
+    <child link="rotated_base_link"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+  </joint>
+
+  <joint name="rotated_base-base_fixed_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0"/>
+    <parent link="rotated_base_link"/>
+    <child link="extra_base_link"/>
+  </joint>
+
+
+  <!-- ROS-Industrial 'base' frame: base_link to ABB World Coordinates transform -->
+  <!-- <joint name="extra_base_link-base" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="extra_base_link"/>
+    <child link="base"/>
+  </joint> -->
+  <!-- 连接新底座与原始底座的joint -->
+  <joint name="base_to_extra_base" type="fixed">
+  <origin xyz="0 0 0.6" rpy="0 0 0"/> <!-- 调整origin以确保两个底座正确对齐 -->
+  <parent link="extra_base_link"/>
+  <child link="base_link"/>
+  </joint>
+
+</robot>

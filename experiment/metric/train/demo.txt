@@ -1,0 +1,44 @@
+unzip metric.zip
+
+CUDA_VISIBLE_DEVICES=0
+tmux ls
+tmux new -s rcql_t
+tmux attach -t rcql_t
+pkill -f tmux
+
+
+
+conda activate torch1_13
+
+tap
+cd /home/wangzhoufeng/code/metric/tap-pybullet
+tmux new -s tap_t
+CUDA_VISIBLE_DEVICES=0 python tap_train.py --box-num 30 --train 1 --test-num 1 --model tnpp --prec-type none --fact-type box --data-type rand --ems-type ems-id-stair --stable-rule hard_before_pack --rotate-axes z --hidden-dim 128 --world-type real --container-type single --pack-type last --stable-predict 0 --note 4corner --corner-num 1 --max-epoch 300 --reward-type H --dataset-path data/time_series/pg.xlsx --custom time_series
+tmux new -s tap_o
+CUDA_VISIBLE_DEVICES=1 python tap_train.py --box-num 30 --train 1 --test-num 1 --model tnpp --prec-type none --fact-type box --data-type rand --ems-type ems-id-stair --stable-rule hard_before_pack --rotate-axes z --hidden-dim 128 --world-type real --container-type single --pack-type last --stable-predict 0 --note 4corner --corner-num 1 --max-epoch 300 --reward-type H --dataset-path data/occupancy/deli.xlsx --custom occupancy
+tmux new -s tap_f
+CUDA_VISIBLE_DEVICES=2 python tap_train.py --box-num 30 --train 1 --test-num 1 --model tnpp --prec-type none --fact-type box --data-type rand --ems-type ems-id-stair --stable-rule hard_before_pack --rotate-axes z --hidden-dim 128 --world-type real --container-type single --pack-type last --stable-predict 0 --note 4corner --corner-num 1 --max-epoch 300 --reward-type H --dataset-path data/flat_long/opai.txt --custom flat_long
+
+
+conda activate torch1_13
+
+pct
+cd /home/wangzhoufeng/code/metric/PCT-pybullet
+tmux new -s pct_t
+CUDA_VISIBLE_DEVICES=1 python main.py --setting 1 --internal-node-holder 80 --leaf-node-holder 50 --load-dataset --dataset-path data/time_series/pg.xlsx --custom time_series --container-size 134 125 100
+tmux new -s pct_o
+CUDA_VISIBLE_DEVICES=1 python main.py --setting 1 --internal-node-holder 80 --leaf-node-holder 50 --load-dataset --dataset-path data/occupancy/deli.xlsx --custom occupancy --container-size 120 100 170
+tmux new -s pct_f
+CUDA_VISIBLE_DEVICES=1 python main.py --setting 1 --internal-node-holder 80 --leaf-node-holder 50 --load-dataset --dataset-path data/flat_long/opai.txt --custom flat_long --container-size 250 120 100
+
+
+packe
+conda activate torch1_13
+cd /home/wangzhoufeng/code/metric/PackE-pybullet
+tmux new -s packe_t
+CUDA_VISIBLE_DEVICES=2 python main.py --setting 1 --custom packe_pg --drl_method acktr --preview 1 --select 1 --internal_node_holder 150 --leaf_node_holder 150 --env_version 3 --device 0 --item_size_set discrete --training_without_evaluate --distribution pg --model_architecture PackE --drl_method a2c --num_processes 16 --load_dataset --dataset_path data/time_series/pg.xlsx
+tmux new -s packe_o
+CUDA_VISIBLE_DEVICES=2 python main.py --setting 1 --custom packe_deli --drl_method acktr --preview 1 --select 1 --internal_node_holder 150 --leaf_node_holder 150 --env_version 3 --device 0 --item_size_set discrete --training_without_evaluate --distribution deli --model_architecture PackE --drl_method a2c --num_processes 16 --load_dataset --dataset_path data/occupancy/deli.xlsx
+tmux new -s packe_f
+CUDA_VISIBLE_DEVICES=2 python main.py --setting 1 --custom packe_opai --drl_method acktr --preview 1 --select 1 --internal_node_holder 150 --leaf_node_holder 150 --env_version 3 --device 0 --item_size_set discrete --training_without_evaluate --distribution opai --model_architecture PackE --drl_method a2c --num_processes 16 --load_dataset --dataset_path data/flat_long/opai.txt
+

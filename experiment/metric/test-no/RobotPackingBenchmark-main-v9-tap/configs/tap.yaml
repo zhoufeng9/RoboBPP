@@ -1,0 +1,90 @@
+task: "tapnet/TAP-v0"
+train: 0
+model: 'tnpp' # tnpp, tn, greedy, tnex
+
+corner_num: 1
+
+box_num: 80
+init_ctn_num: None
+
+container_size: [120, 120, 100]
+box_range: [10, 50]
+
+
+save: 0
+
+# fact_type: tap_fake'
+# data_type: rand'
+# prec_type: attn'
+# # rotate_axes: ['z']
+# rotate_axes: [ 'x', 'y', 'z']
+# ems_type: ems_id_stair'
+gripper_size: None
+
+require_box_num: 0
+
+world_type: 'ideal' # ideal / real
+container_type: 'single' # single / multi
+#stable_rule: "hard_before_pack"    # stable_rule: string {'hard_before_pack', 'hard_after_pack', 'soft_before_pack', 'soft_after_pack', 'none'}
+stable_rule: "none"
+#stable_rule: "hard_before_pack"
+pack_type: 'last' # all / last
+stable_predict: 0
+
+fact_type: 'box'
+data_type: 'rand'
+prec_type: none
+rotate_axes: ['z']
+ems_type: 'ems-id-stair'
+# gripper_size: [40,40,70]
+
+hidden_dim: 128
+reward_type: "H"
+
+use_bridge: 0
+min_ems_width: 0
+min_height_diff: 0
+same_height_threshold: 0
+
+note: '4corner'
+seed: 666
+
+buffer_size: 2048
+max_epoch: 300
+step_per_epoch: 2000
+step_per_collect: 1024
+repeat_per_collect: 10
+episode_per_test: 10
+batch_size: 128
+train_num: 1
+test_num: 1
+
+lr: 3e4
+
+# ppo special
+rew_norm: True
+lr_decay: True
+max_grad_norm: 0.5
+eps_clip: 0.2
+dual_clip: None
+value_clip: 0
+norm_adv: 0
+recompute_adv: 1
+vf_coef: 0.25
+ent_coef: 0.0
+gae_lambda: 0.95
+action_bound_method: "clip"
+gamma: 0.99
+
+logdir: "log"
+device: "cuda"
+
+method: 'ppo'
+resume_path: "policy.pth"
+resume_path_random_time_series: "/media/wzf/goodluck/Workspace/rl/tap/time_series_none/policy.pth"
+resume_path_occupancy: "/media/wzf/goodluck/Workspace/rl/tap/occupancy_none/policy.pth"
+resume_path_flat_long: "/media/wzf/goodluck/Workspace/rl/tap/flat_long_none/policy.pth"
+
+resume_path_random_time_series_pybullet: "model-no/tap/time_series_none/time_series.pth"
+resume_path_occupancy_pybullet: "model-no/tap/occupancy_none/occupancy.pth"
+resume_path_flat_long_pybullet: "model-no/tap/flat_long_none/flat_long.pth"

@@ -1,0 +1,150 @@
+setting: 2
+lnes: 'EMS'
+internal_node_holder: 80
+leaf_node_holder: 50
+shuffle: False
+continuous: False
+#id: 'PctDiscrete-v0'
+
+no_cuda: False
+device: 0
+seed: 4
+#use_acktr: True
+num_processes: 1
+num_steps: 5
+learning_rate: 1e-6
+actor_loss_coef: 1.0
+critic_loss_coef: 1.0
+max_grad_norm: 0.5
+embedding_size: 64
+hidden_size: 128
+gat_layer_num: 1
+head_num: 1
+gamma: 1.0
+
+evaluate: True
+evaluation_episodes: 100
+load_model: True
+model_path: '/media/wzf/goodluck/Workspace/rl/pct/PCT.pt'
+model_path_random_time_series: '/media/wzf/goodluck/Workspace/rl/pct/PCT-time_series.pt'
+model_path_occupancy: '/media/wzf/goodluck/Workspace/rl/pct/PCT-occupancy.pt'
+model_path_flat_long: '/media/wzf/goodluck/Workspace/rl/pct/PCT-flat_long.pt'
+
+model_path_random_time_series_pybullet: '/media/wzf/goodluck/Workspace/rl/pct/PCT-time_series.pt'
+model_path_occupancy_pybullet: '/media/wzf/goodluck/Workspace/rl/pct/PCT-occupancy.pt'
+model_path_flat_long_pybullet: '/media/wzf/goodluck/Workspace/rl/pct/PCT-flat_long.pt'
+
+model_path_random_time_series_pybullet_PackE: 'model-no/packe/packe_pg.pt'
+model_path_occupancy_pybullet_PackE: 'model-no/packe/packe_deli.pt'
+model_path_flat_long_pybullet_PackE: 'model-no/packe/packe_opai.pt'
+
+
+
+load_dataset: True
+dataset_path: None
+
+sample_from_distribution: False
+sample_left_bound: 'a'
+sample_right_bound: 'b'
+
+
+distribution: 'uniform'
+normal_mean: 0.5
+normal_std: 0.5
+#height_reward: True
+distribution_supervision: 'none'
+feature_aggregation: 'mean'
+#no_internal_node_input: True
+repeat_embed: 1
+#new_attention: True
+#inner_leaf_attention_eliminate: True
+specified_mask_id: 0
+#pred_value_with_heightmap: True
+practical_constrain: None
+
+#draw_attention: True
+#reward_evolution: True
+evolution_reward_datasize: 200
+# leaf_without_maxzTrue , help='Train agent without set the leaf node to maxZ')
+#linear_net: True
+#cate_attn: True
+#add_distribution: True
+
+training_without_evaluate: True
+#evaluate_with_large_data: True
+#evaluate_with_no_interval_node: True
+#evaluate_with_given_data: True
+drl_method: 'acktr'
+
+# todo Parameters for the rainbow reinforcement learning agent
+noisy_std: 0.5
+atoms: 31
+V_min: -1
+V_max: 8
+# int(1e3)
+target_update: 1e3
+multi_step: 3
+discount: 0.99
+reward_clip: 0
+rainbow_batch_size: 64
+norm_clip: 10
+memory_capacity: 1e5
+replay_frequency: 4
+priority_exponent: 0.5
+priority_weight: 1.0
+id: 'default'
+#disable_cuda: True
+T_max: 50e6
+max_episode_length: 108e3
+history_length: 1
+architecture: 'canonical'
+learn_start: 5e2
+evaluation_size: 500
+
+#render: True
+#enable_cudnn: True
+
+checkpoint_interval: 10000
+
+#disable_bzip_memory: True
+adam_eps: 1.5e-4
+heuristic: 'LSAH'
+#simple_test: True
+env_version: 3
+#draw: True
+#actor_with_q: True
+#with_four_corner: True
+box_bound: 40
+# funsion function: return, v, q, LSAH, minZ, LLM, DBL, TD_error
+fusion_function: 'minZ+'
+#local_height: True
+
+# extend BPP-1 to BPP-k
+preview: 1
+select: 1
+pruning_threshold: 0.1
+#use_cached_tree: True
+
+# for offline
+offline: False
+known: 50
+
+# for large scale
+large_scale: False
+
+# for learnable
+#load_mcts_model: True
+mcts_model_path: ''
+
+#policy_positional_encoding: True
+# for packing policy training
+ppo_epoch: 4
+num_mini_batch: 32
+
+#use_distilled_critic: True
+container_size: [10, 10, 10]
+item_size_set: 'discrete'
+update_container_method: 'recursive'
+#no_next_item_input': True
+model_architecture: 'PackE'
+

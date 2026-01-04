@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<robot name="box.urdf">
+  <link name="baseLink">
+    <contact>
+      <lateral_friction value="1.0"/>
+      <rolling_friction value="0.0001"/>
+      <inertia_scaling value="3.0"/>
+    </contact>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+       <mass value="0.1"/>
+       <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <!-- <box size="0.20199999999999999 0.365 0.254"/> -->
+        <mesh filename="box/box.obj" scale="0.20199999999999999 0.365 0.254"/>
+      </geometry>
+      <material name="white">
+        <color rgba="0.9 0.9 0.7 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="box/box.obj" scale="0.20199999999999999 0.365 0.254"/>
+	 	    <!-- <box size="0.20199999999999999 0.365 0.254"/> -->
+      </geometry>
+    </collision>
+  </link>
+</robot>

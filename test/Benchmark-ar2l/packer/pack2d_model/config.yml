@@ -1,0 +1,29 @@
+# gripper:
+# - id: 1
+#   img: "dataset/pack2d/data/gripper/1.png"
+# - id: 2
+#   img: "dataset/pack2d/data/gripper/2.png"
+# - id: 3
+#   img: "dataset/pack2d/data/gripper/3.png"
+# - id: 4
+#   img: "dataset/pack2d/data/gripper/4.png"
+
+container:
+ - id: 1
+   img: "dataset/pack2d/container/5.png"
+   pos: (0, 0)
+   border: 0
+
+max_rate: 1
+
+corner: (0, 0)
+#  [y]
+#   |
+# (0,1) ------------- (1,1)
+#   |                   |
+#   |                   |
+#   |                   |
+#   |                   |
+#   |                   |
+#   |                   |
+# (0,0) ------------- (1,0) --[x]

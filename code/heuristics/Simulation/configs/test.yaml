@@ -1,0 +1,198 @@
+Scene:
+    ompl_plan_allowed_time: 50
+    interpolate_num: 300
+    step_size: 0.1
+
+#    support_pose: [1.5, -0.65, 0.0]     # IRB2400
+    support_pose: [1.5, -1.65, 0.0]     # IRB2400
+    conveyor_pose: [0.8, -1.65, 0.0]     # IRB2400
+    plane_offset: [-0, 0, -0.001]   # 平面偏移量
+    block_unit: 0.01   # 3cm一个单位 # 立方体的单位尺寸
+    blocks_num: 10     # 立方体的数量
+    block_gap: 0.001   # 立方体之间的间隙
+    init_box_offset: [0, 0.1, 0] # 初始盒子的偏移量
+    block_min_size: 1    # 立方体的最小和最大尺寸
+    block_max_size: 4
+
+    target_container_size: [10, 10, 10]     # 目标容器的整体尺寸，默认为[10, 10, 10]，会根据选择测试的Data自动修改场景
+#    wall_width: 0.005          # 容器壁的宽度
+    wall_width: 0.002          # 容器壁的宽度
+    target_origin: [0.9, 0.46, 0.025]    # 目标容器的左上角位置，会根据选择测试的Data自动修改场景
+    remove_position: [-1.57056174, -1.74140087, 0.65197798] # 无法摆放物体的丢弃位置
+
+#    height_pose_offset_up: 0.2          # 0.2
+#    height_pose_offset_down: 0.22          # 0.2
+#    height_pose_offset_up: 0.3          # 0.2
+#    height_pose_offset_down: 0.32          # 0.2
+    height_pose_offset_up: 0.35          # 0.2
+    height_pose_offset_down: 0.352          # 0.2
+
+    arm_urdf_path: None
+    homej: None
+
+    # 3d irregular
+    # blockout
+    objPath: None
+    scale: None
+
+    # 2d packing data
+    scale_2d: None
+    objPath_2d: None
+    img_path_2d: None
+
+    height_pose_offset_up_2d: 0.1
+    height_pose_offset_down_2d: 0.117
+
+    UR5:
+        block_unit_ur5: 0.03   # 3cm一个单位 # 立方体的单位尺寸
+        arm_urdf_path_ur5: "ur5/ur5.urdf"
+        homej_ur5: [-1, -0.7, 0.5, -0.5, -0.5, 0]
+
+    IRB2400:
+        block_unit_irb2400: 0.03   # 3cm一个单位 # 立方体的单位尺寸
+        arm_urdf_path_irb2400: "irb2400/irb2400.urdf"
+        homej_irb2400: [0, 0, 0, 0, 0, 0]
+
+    IRB6700:
+#        block_unit_irb6700: 0.05   # 3cm一个单位 # 立方体的单位尺寸
+        block_unit_irb6700: 0.01   # 3cm一个单位 # 立方体的单位尺寸
+        arm_urdf_path_irb6700: "irb6700/irb6700.urdf"
+#        arm_urdf_path_irb6700: "irb6700/irb6700_extra.urdf"
+        homej_irb6700: [ 0, 0, 0, 0, 0, 0, 0, 0 ]
+
+Data:
+#    init_position: [1.57056174, -0.74140087, 0.10197798]    # IRB6700
+#    init_position: [1.57056174, -0.74140087, 0.10197798]    # IRB6700
+#    init_position: [1.57056174, -1.74140087, 0.45197798]    # IRB6700
+    init_position: [1.57056174, -1.74140087, 0.65197798]    # IRB6700
+    init_rotation: [0, 0, 0, 1]
+    tex_path: 'dataset/10_[7]_[1_4]_003_mess_real/train/0/textures.npy'  # 纹理
+
+    # 3d regular
+    Random:
+        ompl_plan_allowed_time: 40
+        interpolate_num: 200
+        step_size: 1
+
+        data_path: 'dataset/10_[7]_[1_4]_003_mess_real/train/0/sizes.npy'
+        container_size: [10, 10, 10]
+        target_origin: [1.2, 0.26, 0.025]   # IRB6700
+        threshold: 0.02
+    Time_series:
+        ompl_plan_allowed_time: 10
+#        interpolate_num: 60
+#        step_size: 0.01
+        interpolate_num: 75
+        step_size: 0.1
+
+#        data_path: 'packing_dataset/宝洁-Simulation+data.xlsx'
+        data_path: 'data/time_series'
+        container_size: [134, 125, 100]
+#        container_size: [30, 30, 30]
+        target_origin: [0.9, -0.6, 0.025]  # IRB2400
+#        threshold: 0.04      # hard
+#        threshold: 0.1      # easy
+        threshold: 0.07
+    Occupancy:
+        ompl_plan_allowed_time: 10 #15  60
+        interpolate_num: 75 #50 75
+        step_size: 0.1
+        
+#        data_path: 'packing_dataset/得力选品desk.xlsx'
+        data_path: 'data/occupancy'
+        # [120cm, 100cm, 170cm] cm转换m -> [1.2m, 1m, 1.7m] 以0.03m为一个单位 -> [40, 33, 57] 缩小4倍 -> [10, 8, 14]
+#        container_size: [20, 16, 14]
+        container_size: [120, 100, 170]
+        target_origin: [1.1, -0.5, 0.025]  # IRB2400
+#        threshold: 0.02      # hard
+#        threshold: 0.06      # easy
+        threshold: 0.04
+    Flat_long:
+        ompl_plan_allowed_time: 5
+        interpolate_num: 50
+        step_size: 0.1
+
+#        data_path: 'packing_dataset/欧派家居opai'
+        data_path: 'data/flat_long'
+#        container_size: [120, 60, 100]
+#        container_size: [250, 120, 100]
+        # 此处将opai的容器翻转一下, 便于更好的展示
+        container_size: [120, 250, 100]
+        target_origin: [0.9, -1.0, 0.025]   # IRB6700
+#        target_origin: [-0.95, 0.9, 0.025]   # IRB6700
+#        target_origin: [-1.0, 1.0, 0.025]   # IRB6700
+#        target_origin: [-0.95, 1.03, 0.025]   # IRB6700
+#        target_origin: [-1.0, 1.03, 0.025]   # IRB6700
+
+#        target_origin: [-0.9, 0.9, 0.025]   # IRB6700
+#        target_origin: [-0.85, 0.7, 0.025]   # IRB6700
+#        threshold: 0.06      # hard
+#        threshold: 0.08      # easy
+        threshold: 0.07
+    # 3d irregular
+    Blockout:
+        ompl_plan_allowed_time: 60
+        interpolate_num: 50
+        step_size: 0.1
+
+        container_size: [5, 5, 5]
+        target_origin: [0.35, 0.28, 0.025]  # UR5
+
+        data_path: "dataset/blockout/object_sizes.npy"
+        data_names: ['1_1B', '1_2I', '1_3I', '2_2B', '2_2L', '2_3L', '2_3T', '2_3Z']
+        objPath: './dataset/blockout/shape_vhacd'
+        scale: [0.45, 0.45, 0.45]
+    Armbench:
+        ompl_plan_allowed_time: 60
+        interpolate_num: 50
+        step_size: 0.1
+
+#        container_size: [7, 7, 7]
+        container_size: [5, 5, 5]
+        target_origin: [0.35, 0.28, 0.025]  # UR5
+
+        data_path: '/media/wzf/goodluck/Workspace/rl/armbench/object_sizes.npy'
+        data_names: ['backpack2', 'broom', 'can3', 'coffee-cup4', 'extinguisher3', 'football', 'frying-pan4', 'keyboard', 'ping-pong', 'powder', 'skateboard_low', 'tiny_tank_blue', 'toy_bear', 'toy_car2', 'whiskey', 'wine']
+        objPath: '/media/wzf/goodluck/Workspace/rl/armbench/shape_vhacd'
+#        scale: [0.1, 0.1, 0.1]
+        scale: [0.05, 0.05, 0.05]
+    Abc:
+        ompl_plan_allowed_time: 60
+        interpolate_num: 50
+        step_size: 0.1
+
+        container_size: [5, 5, 5]
+        target_origin: [0.35, 0.28, 0.025]  # UR5
+
+        data_path: '/media/wzf/goodluck/Workspace/rl/abc/object_sizes.npy'
+        data_names: ['00010085_df3813ab6587454f8b8ccbc1_trimesh_002', '00010114_a35af5bb7a7a42fe9539f3b7_trimesh_006', '00010157_ccef4063b69f428e91b498c9_trimesh_002', '00010184_294dd3a8ef6243c4a04df6b4_trimesh_000', '00010296_567a28d06df6442696b04a02_trimesh_000', '00010310_95db67604aff434da947e5a7_trimesh_000', '00010376_2c76c597062f4d26a82604cf_trimesh_000', '00010402_3f8b98f0e6b84352819ef9b2_trimesh_005', '00010501_71e55f391b054d258d68f256_trimesh_031', '00010529_a8adf76bfb3d4789996949d7_trimesh_005', '00010555_7d04724c2ebf44dc98695823_trimesh_004', '00010617_361c9786cd894debb4689c63_trimesh_014', '00010765_b6194434382c475d90c98a86_trimesh_000', '00011428_63894f787bee446e8818e776_trimesh_000', '00011499_547fd4f9ecd74f86ba27d0c7_trimesh_015', '00011707_1ca1ad2a09504ff1bf83cf74_trimesh_040', '00011887_73c6505f827541168d5410e4_trimesh_156', '00012219_1586127ede7f45209b43e1cb_trimesh_004', '00012234_1586127ede7f45209b43e1cb_trimesh_019', '00012371_eeadb988241143978ce0f238_trimesh_001']
+        objPath: '/media/wzf/goodluck/Workspace/rl/abc/shape_vhacd'
+#        scale: [0.5, 0.5, 0.5]
+        scale: [0.3, 0.3, 0.3]
+
+    # 2d
+    Steel_plate:
+        ompl_plan_allowed_time: 60
+        interpolate_num: 50
+        step_size: 0.1
+
+        container_size: [ 9, 9, 9 ]
+        target_origin: [ 0.9, 0.46, 0.025 ]
+
+        data_path: "/media/wzf/goodluck/Workspace/rl/steel_plate/object_sizes_2d.npy"
+        data_names: "/media/wzf/goodluck/Workspace/rl/steel_plate/names_2d.npy"
+        objPath_2d: '/media/wzf/goodluck/Workspace/rl/steel_plate/steel_plate_obj_fit'
+        scale_2d: [0.0004, 0.0004, 0.0004]
+    Panel_furniture:
+        ompl_plan_allowed_time: 60
+        interpolate_num: 50
+        step_size: 0.1
+
+        container_size: [ 13, 14, 12 ]
+        target_origin: [ 0.9, 0.46, 0.025 ]
+
+        data_path: "/media/wzf/goodluck/Workspace/rl/panel_furniture/object_sizes_2d.npy"
+        data_names: "/media/wzf/goodluck/Workspace/rl/panel_furniture/names_2d.npy"
+        objPath_2d: '/media/wzf/goodluck/Workspace/rl/panel_furniture/panel_furniture_obj_fit'
+        scale_2d: [0.0006, 0.0006, 0.0006]
+

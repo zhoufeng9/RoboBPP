@@ -1,0 +1,62 @@
+setting: 1
+max_item_size: 5
+min_item_size: 1
+continuous: False
+num_box: 80
+num_next_box: 20
+num_candidate_action: 120
+node_dim: 9
+sparse_reward: 1
+no_cuda: False
+device: 0
+seed: 4
+
+training_algorithm: ppo
+num_processes: 16
+num_steps: 30
+
+actor_loss_coef: 1.0
+critic_loss_coef: 1.0
+max_grad_norm: 0.5
+gamma: 1.0
+
+embedding_size: 64
+hidden_size: 128
+gat_layer_num: 1
+
+print_log_interval: 10
+sample_from_distribution: False
+sample_left_bound: 1.
+sample_right_bound: 5.
+unit_interval: 1.
+learning_rate: 3e_4
+num_env_steps: 10e6
+
+use_gae: True
+gae_lambda: 0.95
+clip_param: 0.1
+num_mini_batch: 32
+ppo_epoch: 1
+use_proper_time_limits: False
+value_loss_coef: 1.
+entropy_coef: 0.01
+eps: 1e_5
+alpha: 0.5
+
+model_save_interval: 100
+model_update_interval: 10e3
+model_save_path: 
+
+
+model_path: '../model/packe/AR2L.pt'
+model_path_random_time_series: '../model/ar2l/ideal/AR2L-BPP-policy-time_series.pt'
+model_path_occupancy: '../model/ar2l/ideal/AR2L-BPP-policy-occupancy.pt'
+model_path_flat_long: '../model/ar2l/ideal/AR2L-BPP-policy-flat_long.pt'
+
+model_path_random_time_series_pybullet: '../model/ar2l/pybullet/AR2L-BPP-policy-time_series.pt'
+model_path_occupancy_pybullet: '../model/ar2l/pybullet/AR2L-BPP-policy-occupancy.pt'
+model_path_flat_long_pybullet: '../model/ar2l/pybullet/AR2L-BPP-policy-flat_long.pt'
+load_dataset: False
+dataset_path: None
+
+
