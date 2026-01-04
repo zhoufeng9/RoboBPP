@@ -30,76 +30,54 @@ The website provides:
 
 ---
 
-## 📊 Benchmark Overview
-
-RoboBPP focuses on **online bin packing under robotic constraints**, where items arrive sequentially and decisions must be made without future knowledge.
-
-### Key Features
-- **Online 3D Bin Packing** setting  
-- **Physics-based validation** of packing results  
-- **Industrial-scale real datasets**  
-- **Unified evaluation protocol**  
-- **Support for both heuristic and learning-based methods**
-
----
-
 ## 📦 Datasets
 
 RoboBPP includes **three real-world industrial datasets**, covering diverse packing characteristics and challenges:
 
-- **PG Dataset** – Manufacturer-oriented supply data  
-- **DELI Dataset** – Consumer-oriented demand data  
-- **OPAI Dataset** – Long and slender industrial materials  
+- **Repetitive Dataset** – Manufacturer-oriented supply data  
+- **Diverse Dataset** – Office supplies vendor data  
+- **Wood Board Dataset** – Long and slender industrial materials  
 
 📥 **All datasets can be downloaded from the project homepage:**  
 https://robot-bin-packing-benchmark.github.io/
-
-Each dataset includes:
-- Sequential item arrival order  
-- Exact 3D dimensions  
-- Realistic distribution patterns observed in industry  
-
----
-
-## 🧪 Evaluation Protocol
-
-The benchmark evaluates methods from both **geometric efficiency** and **robotic executability** perspectives.
-
-### Metrics include:
-- Packing height / volume utilization  
-- Packing success rate  
-- Stability and physical feasibility  
-- Online decision quality  
-
-Multiple test settings are provided to ensure robustness and fairness.
-
----
-
-## 🤖 Physics-based Simulation
-
-To validate robotic feasibility, RoboBPP integrates a **physics-based simulation environment** built on **PyBullet**, enabling:
-
-- Collision-aware placement  
-- Gravity and stability checking  
-- Visualization of the packing process  
-- Optional robotic arm execution simulation  
-
-This avoids overly optimistic results that are infeasible in real-world deployment.
 
 ---
 
 ## 🧩 Code Structure
 
-All code required to **run experiments, reproduce results, and visualize packing processes** is fully open-sourced in this repository.
+The repository is organized into three main directories: `code`, `test`, and `experiment`, reflecting the full pipeline from algorithm implementation to evaluation and analysis.
 
-Typical components include:
-- Dataset loaders  
-- Packing algorithms (heuristic & learning-based)  
-- Evaluation scripts  
-- Physics simulation environment  
-- Visualization and logging tools  
+### `code/`
+This directory contains the **training and implementation code** for all packing algorithms reproduced in this benchmark.
 
-Detailed usage instructions can be found in the corresponding subdirectories.
+- `heuristics/`  
+  Implements classical **heuristic-based online bin packing methods**, reproduced by us according to their original papers.
+
+- `learning_based/`  
+  Contains **learning-based approaches**, including model definitions and training pipelines, implemented following the corresponding publications.
+
+All algorithms in this folder are **our own re-implementations** to ensure consistency and fair comparison across methods.
+
+---
+
+### `test/`
+This directory provides the **testing and evaluation code** for running all algorithms in the **physics-based simulation environment**.
+
+- Unified testing interfaces for both heuristic and learning-based methods  
+- Integration with the PyBullet-based simulator  
+- Scripts for executing online packing under different benchmark settings  
+- Includes **pre-trained models for selected learning-based methods** to facilitate reproducibility
+
+---
+
+### `experiment/`
+This directory contains code for **controlled experimental studies** beyond standard benchmark evaluation.
+
+- Verification and ablation experiments for evaluation metrics  
+- Statistical analysis of dataset properties  
+- Experiments validating the effectiveness and rationality of the proposed benchmark metrics
+
+These experiments are primarily used to support the analysis and claims presented in the paper.
 
 ---
 
@@ -108,26 +86,4 @@ Detailed usage instructions can be found in the corresponding subdirectories.
 ```bash
 git clone https://github.com/your-repo/RoboBPP.git
 cd RoboBPP
-
-
-
-learning based:
-```bash
-AR2L
-PCT
-PackE
-CDRL
-TapNet++
-```
-
-heuristics:
-```bash
- HeightmapMin
- LSAH
- MACS
- RANDOM
- OnlineBPH
- DBL
- BR
- SDFPack
 ```
